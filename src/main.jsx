@@ -10,11 +10,15 @@ import AuthProvider from "./Authentications/AuthProvider/AuthProvider.jsx";
 import ProductDetails from "./Pages/Home/productDetails.jsx";
 import Allproducts from "./Pages/Allproducts.jsx";
 import Mybides from "./Pages/Mybides.jsx";
+import Myproducts from "./Pages/Myproducts.jsx";
+import Page404 from "./Pages/404 page/Errorpage.jsx";
+import PrivetRouter from "./Pages/PrivetRouter.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Mainmother,
+    errorElement: <Page404/>,
     children: [
       {
         index: true,
@@ -35,7 +39,7 @@ const router = createBrowserRouter([
         path: "/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/myProducts/${params.id}`),
-        Component: ProductDetails,
+        element: <PrivetRouter><ProductDetails/></PrivetRouter>,
       },
       {
         path: "/all-products",
@@ -44,12 +48,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-bids",
-        Component: Mybides,
+        element: <PrivetRouter><Mybides/></PrivetRouter>,
       },
       {
         path: "*",
-        Component: () => <div>404 Not Found</div>,
+        element: <Page404/>,
       },
+      {
+        path: "/my-products",
+        element: <PrivetRouter><Myproducts/></PrivetRouter>,
+      }
     ],
   },
 ]);

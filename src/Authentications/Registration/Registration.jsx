@@ -1,11 +1,25 @@
 import { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { updateProfile } from "firebase/auth";
+import Loader from "../../Pages/Loader/Loader";
+import { useNavigate } from "react-router";
+import { Eye, EyeOff } from "lucide-react";
 
 const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const { createUser, googleSignIn, updateProfile } = use(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const { createUser, googleSignIn, loading, setLoading } = use(AuthContext);
+
+  if(loading){
+    return <Loader/>
+  }
+  const navigate = useNavigate(); 
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,13 +41,17 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        updateProfile(result.user, {
+        const user = result.user;
+        setLoading(true);
+        updateProfile(user, {
           displayName: name,
           photoURL: photoURL,
         })
           .then(() => {
             setSuccess(true);
             e.target.reset();
+            setLoading(false);
+            navigate("/");
           })
           .catch((error) => {
             if (error.code === "auth/invalid-photo-url") {
@@ -60,6 +78,7 @@ const Register = () => {
     googleSignIn()
       .then(() => {
         setSuccess(true);
+        navigate("/");
       })
       .catch((error) => {
         setError(error.message.split("or")[1]);
@@ -85,6 +104,7 @@ const Register = () => {
             <label className="block text-gray-700 mb-1">Name</label>
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
@@ -94,6 +114,7 @@ const Register = () => {
             <label className="block text-gray-700 mb-1">Email</label>
             <input
               type="email"
+              name="email"
               placeholder="example@gmail.com"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
@@ -103,18 +124,27 @@ const Register = () => {
             <label className="block text-gray-700 mb-1">Image URL</label>
             <input
               type="text"
+              name="photoURL"
               placeholder="https://yourimage.com/pic.jpg"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
-          <div>
+          <div className="relative">
             <label className="block text-gray-700 mb-1">Password</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
+              name="password"
               placeholder="********"
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
             />
+            <button
+              type="button"
+              onClick={togglePassword}
+              className="absolute right-3 top-10 text-gray-500 hover:text-[#347928] transition"
+            >
+              {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+            </button>
           </div>
 
           <button

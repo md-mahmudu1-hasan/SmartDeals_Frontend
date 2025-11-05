@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -34,14 +35,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-  const updateUserProfile = (displayName , photoURL , currentUser) => {
-  setLoading(true);
-  return updateProfile(currentUser , {
-    displayName,
-    photoURL
-  })
-}
-
   const val = {
     createUser,
     signIn,
@@ -49,7 +42,7 @@ const AuthProvider = ({ children }) => {
     SignOut,
     loading,
     googleSignIn,
-    updateUserProfile,
+    setLoading,
   };
   return (
     <div>
