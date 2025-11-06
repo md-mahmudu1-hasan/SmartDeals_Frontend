@@ -47,7 +47,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center min-h-screen bg-gray-50  pt-18">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white shadow-md rounded-lg p-8"

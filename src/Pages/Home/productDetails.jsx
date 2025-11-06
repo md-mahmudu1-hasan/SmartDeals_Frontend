@@ -71,7 +71,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-4xl mx-auto p-10 space-y-6 pt-20">
       <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
         <img
           src={image}
@@ -133,7 +133,8 @@ const ProductDetails = () => {
             </div>
           </div>
         </dialog>
-      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-4">
+        {
+          bid.length === 0 ? <p className="text-center text-gray-600 text-4xl font-semibold mt-10 border-2 border-gray-200 p-4"><span className="text-purple-600">No bids</span> placed yet</p> : <div className="overflow-x-auto bg-white rounded-xl shadow-md p-4">
         <table className="min-w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-200 text-gray-700">
@@ -174,6 +175,7 @@ const ProductDetails = () => {
           </tbody>
         </table>
       </div>
+       }
     </div>
   );
 };

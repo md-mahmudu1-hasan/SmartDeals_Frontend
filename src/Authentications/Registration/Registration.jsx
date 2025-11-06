@@ -85,8 +85,8 @@ const Register = () => {
       });
   };
 
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+  return ( 
+    <div className="flex justify-center items-center min-h-screen bg-gray-50 pt-18">
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
         <h2 className="text-2xl font-bold text-center mb-2">Register Now!</h2>
         <p className="text-center text-gray-600 mb-6">

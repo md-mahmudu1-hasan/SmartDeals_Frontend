@@ -38,7 +38,7 @@ const Myproducts = () => {
     return <NoDataFound/>
   }
   return (
-    <div className="p-6 min-h-screen container mx-auto">
+    <div className="p-6 min-h-screen container mx-auto  pt-18">
       <h1 className="text-3xl font-bold text-center text-purple-600 mb-8">
         My Products
       </h1>

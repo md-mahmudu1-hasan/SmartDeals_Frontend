@@ -39,7 +39,7 @@ if(bides.length === 0){
       });
   };
   return (
-    <div className="p-6 min-h-screen container mx-auto">
+    <div className="p-6 min-h-screen container mx-auto pt-18">
       <h1 className="text-3xl font-bold text-center mb-8">
         My Bids: <span className="text-purple-600">{bides.length}</span>
       </h1>

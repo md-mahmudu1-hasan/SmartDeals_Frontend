@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLoaderData, useNavigation } from "react-router";
 import Loader from "../Loader/Loader";
+import HeroSection from "../Hero";
 
 const Home = () => {
   const products = useLoaderData();
@@ -8,13 +9,14 @@ const Home = () => {
   if (navigation.state === "loading") {
     return <Loader/>
   }
-  const limitedProducts = products.slice(0, 9);
+  const limitedProducts = products.slice(0, 8);
   return (
     <div className="container mx-auto p-3">
+      <HeroSection/>
       <h2 className="text-3xl font-bold text-center mt-8 text-gray-800">
         <span className="text-purple-600">All</span> Products
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
         {limitedProducts.map((product) => (
           <div
             key={product.id}

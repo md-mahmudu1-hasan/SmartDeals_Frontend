@@ -10,7 +10,7 @@ const Allproducts = () => {
     return <Loader/>
   }
   return (
-<div className="p-3 container mx-auto min-h-screen">
+<div className="p-3 container mx-auto min-h-screen  pt-18">
   <h2 className="text-3xl font-bold text-center text-gray-800">
     All <span className="text-purple-600">Products</span>: {products.length}
   </h2>
