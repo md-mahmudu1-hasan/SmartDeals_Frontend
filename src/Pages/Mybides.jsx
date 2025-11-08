@@ -4,26 +4,43 @@ import { Loader } from "lucide-react";
 import NoDataFound from "./NoDataFound";
 
 const Mybides = () => {
-  const { user , loading } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   const [bides, setBides] = useState([]);
-  
+
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     fetch(`http://localhost:3000/bideInfo?email=${user.email}`, {
+  //       headers: {
+  //         authorization: `Bearer ${user.accessToken} `,
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setBides(data);
+  //       });
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/bideInfo?email=${user.email}`)
+      fetch(`http://localhost:3000/bideInfo?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")} `,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setBides(data);
         });
     }
-  }, [user?.email]);
+  }, [user]);
 
-if(loading){
-  return <Loader/>
-}
-if(bides.length === 0){
-  return <NoDataFound/>
-}
+  if (loading) {
+    return <Loader />;
+  }
+  if (bides.length === 0) {
+    return <NoDataFound />;
+  }
 
   const handlebideremove = (_id) => {
     fetch(`http://localhost:3000/bideInfo/${_id}`, {
@@ -98,7 +115,7 @@ if(bides.length === 0){
               </tr>
             ))}
           </tbody>
-        </table>  
+        </table>
       </div>
     </div>
   );

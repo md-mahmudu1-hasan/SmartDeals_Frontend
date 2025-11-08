@@ -9,13 +9,19 @@ const Myproducts = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/bideInfo?email=${user.email}`)
+      fetch(`http://localhost:3000/bideInfo?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")} `,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setProducts(data);
         });
     }
-  }, [user?.email]);
+  }, [user]);
+
+
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/bideInfo/${id}`, {
       method: "DELETE",
