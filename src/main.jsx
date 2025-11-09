@@ -13,6 +13,7 @@ import Mybides from "./Pages/Mybides.jsx";
 import Myproducts from "./Pages/Myproducts.jsx";
 import Page404 from "./Pages/404 page/Errorpage.jsx";
 import PrivetRouter from "./Pages/PrivetRouter.jsx";
+import CreateProducts from "./Pages/CreateProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/my-products",
         element: <PrivetRouter><Myproducts/></PrivetRouter>,
+      },
+      {
+        path:"/CreateProducts",
+        element:<PrivetRouter><CreateProducts/></PrivetRouter>,
       }
     ],
   },
