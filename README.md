@@ -3,13 +3,13 @@
 ## live URL :
 ```
 https://fir-auth-smartdeals.web.app/
-
  ```
  
 API URL :
 
 ```
-https://apps-store-server.vercel.app/
+https://smart-project-five.vercel.app/
+
 ```
 
 
