@@ -9,7 +9,7 @@ const Mybides = () => {
 
   // useEffect(() => {
   //   if (user?.email) {
-  //     fetch(`http://localhost:3000/bideInfo?email=${user.email}`, {
+  //     fetch(`https://smart-project-five.vercel.app/bideInfo?email=${user.email}`, {
   //       headers: {
   //         authorization: `Bearer ${user.accessToken} `,
   //       },
@@ -23,7 +23,7 @@ const Mybides = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/bideInfo?email=${user.email}`, {
+      fetch(`https://smart-project-five.vercel.app/bideInfo?email=${user.email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")} `,
         },
@@ -43,7 +43,7 @@ const Mybides = () => {
   }
 
   const handlebideremove = (_id) => {
-    fetch(`http://localhost:3000/bideInfo/${_id}`, {
+    fetch(`https://smart-project-five.vercel.app/bideInfo/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

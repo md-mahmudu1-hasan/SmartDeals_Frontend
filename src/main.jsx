@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
         loader: () => {
-          return fetch("http://localhost:3000/myProducts");
+          return fetch("https://smart-project-five.vercel.app/myProducts");
         },
       },
       {
@@ -39,13 +39,13 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/myProducts/${params.id}`),
+          fetch(`https://smart-project-five.vercel.app/myProducts/${params.id}`),
         element: <PrivetRouter><ProductDetails/></PrivetRouter>,
       },
       {
         path: "/all-products",
         Component: Allproducts,
-        loader: () => fetch("http://localhost:3000/myProducts"),
+        loader: () => fetch("https://smart-project-five.vercel.app/myProducts"),
       },
       {
         path: "/my-bids",

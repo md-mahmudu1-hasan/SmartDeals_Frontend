@@ -63,6 +63,7 @@ const Navbar = () => {
             )}
             {user ? (
               <img
+              referrerPolicy="no-referrer"
                 src={user?.photoURL}
                 alt={user?.displayName}
                 className="w-10 h-10 rounded-full cursor-pointer"
@@ -114,6 +115,7 @@ const Navbar = () => {
             )}
             {user ? (
               <img
+              referrerPolicy="no-referrer"
                 src={user?.photoURL}
                 alt={user?.displayName}
                 className="w-10 h-10 rounded-full cursor-pointer"

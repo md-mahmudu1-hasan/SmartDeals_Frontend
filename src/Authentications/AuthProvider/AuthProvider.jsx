@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       if (user) {
-        fetch("http://localhost:3000/gettoken", {
+        fetch("https://smart-project-five.vercel.app/gettoken", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

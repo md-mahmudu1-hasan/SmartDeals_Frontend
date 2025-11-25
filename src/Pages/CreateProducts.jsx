@@ -21,7 +21,7 @@ const CreateProducts = () => {
     });
 
     // axios
-    //   .post("http://localhost:3000/myproducts", productInfo)
+    //   .post("https://smart-project-five.vercel.app/myproducts", productInfo)
     //   .then((response) => {
     //     console.log("response", response.data);
 

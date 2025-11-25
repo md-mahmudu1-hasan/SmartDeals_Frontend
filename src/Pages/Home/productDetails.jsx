@@ -16,7 +16,7 @@ const ProductDetails = () => {
   const productRef = useRef(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myProducts/bideInfo/${_id}`, {
+    fetch(`https://smart-project-five.vercel.app/myProducts/bideInfo/${_id}`, {
       headers: {
         authorization: `Bearer ${user.accessToken} `,
       },
@@ -53,7 +53,7 @@ const ProductDetails = () => {
       productPrice: price,
       productDescription: description,
     };
-    fetch("http://localhost:3000/bideInfo", {
+    fetch("https://smart-project-five.vercel.app/bideInfo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
